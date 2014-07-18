@@ -12,7 +12,7 @@ import SwiftServe
 class AppDelegate: NSObject, NSApplicationDelegate {
                             
     @IBOutlet var window: NSWindow
-    @lazy var server:Server = Server(boundHost: nil, port: 12345)
+    @lazy var server:Server = Server(boundHost: nil, port: 3333)
 
     func applicationDidFinishLaunching(aNotification: NSNotification?)
     {
