@@ -10,6 +10,7 @@ import Foundation
 
 class Filter
 {
+    var routes:JLRoutes?
     var nextFilter:Filter?
     
     init()
@@ -19,12 +20,20 @@ class Filter
     
     func processFilter(connection:Connection)
     {
-        processRequest(connection)
+        if !routes || routes!.canRouteURL(connection.request!.URL)
+        {
+            processRequest(connection)
+        }
+            
         if nextFilter
         {
             nextFilter!.processFilter(connection)
         }
-        processResponse(connection)
+        
+        if !routes || routes!.canRouteURL(connection.request!.URL)
+        {
+            processResponse(connection)
+        }
     }
     
     func processRequest(connection:Connection)
@@ -35,5 +44,16 @@ class Filter
     func processResponse(connection:Connection)
     {
         // override this method in subclasses
+    }
+    
+    func addRoute(route:String)
+    {
+        if !routes
+        {
+            var classname = NSString(UTF8String: object_getClassName(self))
+            routes = JLRoutes(forScheme: classname)
+        }
+        
+        routes!.addRoute(route, handler: { parameters in return (true as ObjCBool)} )
     }
 }

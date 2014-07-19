@@ -14,7 +14,7 @@
 
 
 static NSMutableDictionary *routeControllersMap = nil;
-static BOOL verboseLoggingEnabled = NO;
+static BOOL verboseLoggingEnabled = YES;
 static BOOL shouldDecodePlusSymbols = YES;
 
 

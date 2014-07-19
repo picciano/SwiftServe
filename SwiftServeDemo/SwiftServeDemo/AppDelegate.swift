@@ -16,7 +16,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(aNotification: NSNotification?)
     {
-        server.filterChain.add(Logging())
+        let logging = Logging()
+        logging.addRoute("/*")
+        server.filterChain.add(logging)
+        
         server.filterChain.add(ErrorPage())
         server.filterChain.add(Nothing())
         
