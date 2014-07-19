@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <SwiftServe/GCDAsyncSocket.h>
+#import <SwiftServe/JLRoutes.h>
 
 //! Project version number for SwiftServe.
 FOUNDATION_EXPORT double SwiftServeVersionNumber;

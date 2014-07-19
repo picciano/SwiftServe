@@ -12,6 +12,8 @@
 		E409CFF9197A0A3900186C94 /* FilterChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409CFF8197A0A3900186C94 /* FilterChain.swift */; };
 		E409CFFB197A139600186C94 /* Nothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409CFFA197A139600186C94 /* Nothing.swift */; };
 		E409CFFD197A149E00186C94 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409CFFC197A149E00186C94 /* Logging.swift */; };
+		E41B3316197AEB0B00F6C188 /* JLRoutes.h in Headers */ = {isa = PBXBuildFile; fileRef = E41B3314197AEB0B00F6C188 /* JLRoutes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E41B3317197AEB0B00F6C188 /* JLRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B3315197AEB0B00F6C188 /* JLRoutes.m */; };
 		E4AA9C7D1979C66D00D87153 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA9C7C1979C66D00D87153 /* Response.swift */; };
 		E4AA9C7F1979CB1E00D87153 /* HeaderKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA9C7E1979CB1E00D87153 /* HeaderKey.swift */; };
 		E4C8CC97197886BD000B8FAE /* SwiftServe.h in Headers */ = {isa = PBXBuildFile; fileRef = E4C8CC96197886BC000B8FAE /* SwiftServe.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -49,6 +51,8 @@
 		E409CFF8197A0A3900186C94 /* FilterChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterChain.swift; sourceTree = "<group>"; };
 		E409CFFA197A139600186C94 /* Nothing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nothing.swift; sourceTree = "<group>"; };
 		E409CFFC197A149E00186C94 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		E41B3314197AEB0B00F6C188 /* JLRoutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLRoutes.h; sourceTree = "<group>"; };
+		E41B3315197AEB0B00F6C188 /* JLRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLRoutes.m; sourceTree = "<group>"; };
 		E4AA9C7C1979C66D00D87153 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		E4AA9C7E1979CB1E00D87153 /* HeaderKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderKey.swift; sourceTree = "<group>"; };
 		E4C8CC91197886BC000B8FAE /* SwiftServe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftServe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +100,15 @@
 			name = Filters;
 			sourceTree = "<group>";
 		};
+		E41B3313197AEB0B00F6C188 /* JLRoutes */ = {
+			isa = PBXGroup;
+			children = (
+				E41B3314197AEB0B00F6C188 /* JLRoutes.h */,
+				E41B3315197AEB0B00F6C188 /* JLRoutes.m */,
+			);
+			path = JLRoutes;
+			sourceTree = "<group>";
+		};
 		E4C8CC87197886BC000B8FAE = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +136,7 @@
 				E409CFF3197A095000186C94 /* Filters */,
 				E4C8CCDB19788706000B8FAE /* Core */,
 				E4C8CCEC19796BFC000B8FAE /* GCDAsyncSocket */,
+				E41B3313197AEB0B00F6C188 /* JLRoutes */,
 				E4C8CC94197886BC000B8FAE /* Supporting Files */,
 			);
 			path = SwiftServe;
@@ -200,6 +214,7 @@
 			files = (
 				E4C8CC97197886BD000B8FAE /* SwiftServe.h in Headers */,
 				E4C8CCE71978972F000B8FAE /* GCDAsyncSocket.h in Headers */,
+				E41B3316197AEB0B00F6C188 /* JLRoutes.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +319,7 @@
 				E4C8CCE519789724000B8FAE /* GCDAsyncSocket.m in Sources */,
 				E409CFFD197A149E00186C94 /* Logging.swift in Sources */,
 				E4AA9C7F1979CB1E00D87153 /* HeaderKey.swift in Sources */,
+				E41B3317197AEB0B00F6C188 /* JLRoutes.m in Sources */,
 				E4F6F1E51979E3970090EBC8 /* StatusCode.swift in Sources */,
 				E4C8CCEE19796FE9000B8FAE /* Request.swift in Sources */,
 				E4C8CCEB19796B1F000B8FAE /* Connection.swift in Sources */,
