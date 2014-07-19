@@ -59,6 +59,7 @@ class Server: GCDAsyncSocketDelegate
         {
             socket.disconnect()
             isListening = false
+            connections.removeAll(keepCapacity: false)
             return true
         }
         return false

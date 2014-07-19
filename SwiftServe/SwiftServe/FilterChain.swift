@@ -23,12 +23,12 @@ class FilterChain
         filters.append(filter)
     }
     
-    func processFilters(#request:Request, response:Response)
+    func processFilters(connection:Connection)
     {
         if filters.count > 0
         {
             let firstFilter = filters[0]
-            firstFilter.processFilter(request:request, response:response)
+            firstFilter.processFilter(connection)
         }
     }
 }

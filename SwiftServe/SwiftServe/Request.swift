@@ -50,6 +50,11 @@ class Request
         return CFHTTPMessageCopyRequestURL(message).takeUnretainedValue()
     }
     
+    var version:String
+    {
+        return CFHTTPMessageCopyVersion(message).takeUnretainedValue()
+    }
+    
     var bodyData:NSData
     {
         return CFHTTPMessageCopyBody(message).takeUnretainedValue()

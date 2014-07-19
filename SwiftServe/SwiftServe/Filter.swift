@@ -17,25 +17,23 @@ class Filter
         
     }
     
-    func processFilter(#request:Request, response:Response)
+    func processFilter(connection:Connection)
     {
-        processRequest(request:request, response:response)
-        
+        processRequest(connection)
         if nextFilter
         {
-            nextFilter!.processFilter(request:request, response:response)
+            nextFilter!.processFilter(connection)
         }
-        
-        processResponse(request:request, response:response)
+        processResponse(connection)
     }
     
-    func processRequest(#request:Request, response:Response)
+    func processRequest(connection:Connection)
     {
-        
+        // override this method in subclasses
     }
     
-    func processResponse(#request:Request, response:Response)
+    func processResponse(connection:Connection)
     {
-        
+        // override this method in subclasses
     }
 }

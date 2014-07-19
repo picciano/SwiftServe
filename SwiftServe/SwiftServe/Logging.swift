@@ -10,9 +10,17 @@ import Foundation
 
 class Logging:Filter
 {
-    override func processRequest(#request:Request, response:Response)
+    override func processResponse(connection: Connection)
     {
-        var date = NSDate()
-        println("\(date) Received request for \(request.URL)")
+        let host = connection.socket.connectedHost
+        let ident = "-"
+        let user = "-"
+        let date = NSDate()
+        let method = connection.request!.HTTPMethod
+        let path = connection.request!.URL.path
+        let version = connection.request!.version
+        let responseCode = connection.response!.statusCode.code
+        let contentLength = connection.response!.messageData.length
+        println("\(host) \(ident) \(user) [\(date)] \"\(method) \(path) \(version)\" \(responseCode) \(contentLength)")
     }
 }

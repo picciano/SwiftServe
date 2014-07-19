@@ -47,7 +47,7 @@ class Connection: GCDAsyncSocketDelegate
             request!.appendRequestData(requestData)
             response = Response();
             
-            filterChain.processFilters(request:request!, response:response!)
+            filterChain.processFilters(self)
             sendResponse()
         }
         else

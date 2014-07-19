@@ -10,29 +10,30 @@ import Foundation
 
 class ErrorPage:Filter
 {
-    override func processResponse(#request:Request, response:Response)
+    override func processResponse(connection:Connection)
     {
-        switch response.statusCode.code {
+        switch connection.response!.statusCode.code {
         case 0...199, 300...599:
-            sendErrorPage(request:request, response:response)
+            sendErrorPage(connection)
             
         default:
             break
         }
     }
     
-    func sendErrorPage(#request:Request, response:Response)
+    func sendErrorPage(connection:Connection)
     {
         let appName = NSBundle.mainBundle().infoDictionary.objectForKey(kCFBundleNameKey) as String
         let version = NSBundle.mainBundle().infoDictionary.objectForKey("CFBundleShortVersionString") as String
-        let host = request.value(forHeaderKey: HeaderKey.Host)
+        let host = connection.request!.value(forHeaderKey: HeaderKey.Host)
         
         let message = "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">"
-            + "<html><head><title>\(response.statusCode.code) \(response.statusCode.description)</title></head><body><h1>\(response.statusCode.description)</h1>"
-            + "<p>The requested URL \(request.URL) failed.</p>"
+            + "<html><head><title>\(connection.response!.statusCode.code) \(connection.response!.statusCode.description)</title></head>"
+            + "<body><h1>\(connection.response!.statusCode.description)</h1>"
+            + "<p>The requested URL \(connection.request!.URL) failed.</p>"
             + "<hr><address>\(appName)/\(version) (MacOSX) at \(host)</address></body></html>"
         
         var messageData = message.bridgeToObjectiveC().dataUsingEncoding(NSUTF8StringEncoding)
-        response.data.appendData(messageData)
+        connection.response!.data.appendData(messageData)
     }
 }

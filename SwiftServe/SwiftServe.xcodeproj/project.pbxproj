@@ -89,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				E409CFF4197A098500186C94 /* Filter.swift */,
-				E409CFF8197A0A3900186C94 /* FilterChain.swift */,
 				E409CFF6197A099600186C94 /* ErrorPage.swift */,
 				E409CFFA197A139600186C94 /* Nothing.swift */,
 				E409CFFC197A149E00186C94 /* Logging.swift */,
@@ -158,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				E4C8CCE019788740000B8FAE /* Server.swift */,
+				E409CFF8197A0A3900186C94 /* FilterChain.swift */,
 				E4C8CCEA19796B1F000B8FAE /* Connection.swift */,
 				E4C8CCED19796FE9000B8FAE /* Request.swift */,
 				E4AA9C7C1979C66D00D87153 /* Response.swift */,
