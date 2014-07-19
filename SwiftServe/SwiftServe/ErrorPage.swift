@@ -42,8 +42,9 @@ class ErrorPage:Filter
         let method = connection.request!.HTTPMethod
         let path = connection.request!.URL.path
         let version = connection.request!.version
+        let host = connection.socket.connectedHost
         
-        let request = "\"\(method) \(path) \(version)\""
+        let request = "\"\(method) \(path) \(version)\" from \(host)"
         return request
     }
 }
