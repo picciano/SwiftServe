@@ -14,6 +14,7 @@ enum HeaderKey:String
     case AcceptEncoding = "Accept-Encoding"
     case AcceptLanguage = "Accept-Language"
     case Authorization = "Authorization"
+    case CacheControl = "Cache-Control"
     case Connection = "Connection"
     case Content = "Content"
     case ContentLength = "Content-Length"
