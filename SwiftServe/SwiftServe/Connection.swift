@@ -47,16 +47,16 @@ class Connection: GCDAsyncSocketDelegate
             
             let filterChain = FilterChain();
             
-            let logging:Logging = Logging(request: request!, response: response!)
+            let logging:Logging = Logging()
             filterChain.add(logging)
             
-            let errorPage:ErrorPage = ErrorPage(request: request!, response: response!)
+            let errorPage:ErrorPage = ErrorPage()
             filterChain.add(errorPage)
             
-            let nothing:Nothing = Nothing(request: request!, response: response!)
+            let nothing:Nothing = Nothing()
             filterChain.add(nothing)
             
-            filterChain.processFilters()
+            filterChain.processFilters(request:request!, response:response!)
             
             sendResponse()
             

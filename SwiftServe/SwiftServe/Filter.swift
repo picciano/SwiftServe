@@ -10,34 +10,31 @@ import Foundation
 
 class Filter
 {
-    let request:Request
-    let response:Response
     var nextFilter:Filter?
     
-    init(request:Request, response:Response)
+    init()
     {
-        self.request = request
-        self.response = response
+        
     }
     
-    func processFilter()
+    func processFilter(#request:Request, response:Response)
     {
-        processRequest()
+        processRequest(request:request, response:response)
         
         if nextFilter
         {
-            nextFilter!.processFilter()
+            nextFilter!.processFilter(request:request, response:response)
         }
         
-        processResponse()
+        processResponse(request:request, response:response)
     }
     
-    func processRequest()
+    func processRequest(#request:Request, response:Response)
     {
         
     }
     
-    func processResponse()
+    func processResponse(#request:Request, response:Response)
     {
         
     }

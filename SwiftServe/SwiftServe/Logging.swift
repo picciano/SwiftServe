@@ -10,7 +10,7 @@ import Foundation
 
 class Logging:Filter
 {
-    override func processRequest()
+    override func processRequest(#request:Request, response:Response)
     {
         var date = NSDate()
         println("\(date) Received request for \(request.URL)")

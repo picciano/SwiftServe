@@ -10,18 +10,18 @@ import Foundation
 
 class ErrorPage:Filter
 {
-    override func processResponse()
+    override func processResponse(#request:Request, response:Response)
     {
         switch response.statusCode.code {
         case 0...199, 300...599:
-            sendErrorPage()
+            sendErrorPage(request:request, response:response)
             
         default:
             break
         }
     }
     
-    func sendErrorPage()
+    func sendErrorPage(#request:Request, response:Response)
     {
         let appName = NSBundle.mainBundle().infoDictionary.objectForKey(kCFBundleNameKey) as String
         let version = NSBundle.mainBundle().infoDictionary.objectForKey("CFBundleShortVersionString") as String
