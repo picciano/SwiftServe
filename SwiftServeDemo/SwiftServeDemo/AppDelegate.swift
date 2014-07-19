@@ -16,6 +16,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(aNotification: NSNotification?)
     {
+        server.filterChain.add(Logging())
+        server.filterChain.add(ErrorPage())
+        server.filterChain.add(Nothing())
+        
         startServer(self)
     }
     

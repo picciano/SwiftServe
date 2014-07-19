@@ -10,6 +10,7 @@ import Foundation
 
 class Connection: GCDAsyncSocketDelegate
 {
+    let filterChain:FilterChain;
     let socket:GCDAsyncSocket
     let requestData:NSMutableData
     
@@ -18,9 +19,10 @@ class Connection: GCDAsyncSocketDelegate
     var expectedContentLength:Int?
     var didSendResponse = false;
     
-    init(socket:GCDAsyncSocket)
+    init(socket:GCDAsyncSocket, filterChain:FilterChain)
     {
         self.socket = socket
+        self.filterChain = filterChain
         requestData = NSMutableData()
         
         socket.delegate = self
@@ -45,21 +47,8 @@ class Connection: GCDAsyncSocketDelegate
             request!.appendRequestData(requestData)
             response = Response();
             
-            let filterChain = FilterChain();
-            
-            let logging:Logging = Logging()
-            filterChain.add(logging)
-            
-            let errorPage:ErrorPage = ErrorPage()
-            filterChain.add(errorPage)
-            
-            let nothing:Nothing = Nothing()
-            filterChain.add(nothing)
-            
             filterChain.processFilters(request:request!, response:response!)
-            
             sendResponse()
-            
         }
         else
         {
