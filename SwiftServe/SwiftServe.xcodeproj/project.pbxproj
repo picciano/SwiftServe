@@ -14,6 +14,10 @@
 		E409CFFD197A149E00186C94 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409CFFC197A149E00186C94 /* Logging.swift */; };
 		E41B3316197AEB0B00F6C188 /* JLRoutes.h in Headers */ = {isa = PBXBuildFile; fileRef = E41B3314197AEB0B00F6C188 /* JLRoutes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E41B3317197AEB0B00F6C188 /* JLRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B3315197AEB0B00F6C188 /* JLRoutes.m */; };
+		E47EB6AA197B29C600D6ADEA /* GZipCompressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47EB6A9197B29C600D6ADEA /* GZipCompressor.swift */; };
+		E47EB6B0197B2D1700D6ADEA /* NSData+BaristaExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = E47EB6AC197B2D1700D6ADEA /* NSData+BaristaExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E47EB6B1197B2D1700D6ADEA /* NSData+BaristaExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E47EB6AD197B2D1700D6ADEA /* NSData+BaristaExtensions.m */; };
+		E47EB6B5197B2DB700D6ADEA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E47EB6B4197B2DB700D6ADEA /* libz.dylib */; };
 		E4AA9C7D1979C66D00D87153 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA9C7C1979C66D00D87153 /* Response.swift */; };
 		E4AA9C7F1979CB1E00D87153 /* HeaderKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA9C7E1979CB1E00D87153 /* HeaderKey.swift */; };
 		E4C8CC97197886BD000B8FAE /* SwiftServe.h in Headers */ = {isa = PBXBuildFile; fileRef = E4C8CC96197886BC000B8FAE /* SwiftServe.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,6 +57,10 @@
 		E409CFFC197A149E00186C94 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		E41B3314197AEB0B00F6C188 /* JLRoutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLRoutes.h; sourceTree = "<group>"; };
 		E41B3315197AEB0B00F6C188 /* JLRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLRoutes.m; sourceTree = "<group>"; };
+		E47EB6A9197B29C600D6ADEA /* GZipCompressor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZipCompressor.swift; sourceTree = "<group>"; };
+		E47EB6AC197B2D1700D6ADEA /* NSData+BaristaExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+BaristaExtensions.h"; path = "../NSData+BaristaExtensions.h"; sourceTree = "<group>"; };
+		E47EB6AD197B2D1700D6ADEA /* NSData+BaristaExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+BaristaExtensions.m"; path = "../NSData+BaristaExtensions.m"; sourceTree = "<group>"; };
+		E47EB6B4197B2DB700D6ADEA /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E4AA9C7C1979C66D00D87153 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		E4AA9C7E1979CB1E00D87153 /* HeaderKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderKey.swift; sourceTree = "<group>"; };
 		E4C8CC91197886BC000B8FAE /* SwiftServe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftServe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E47EB6B5197B2DB700D6ADEA /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				E409CFF4197A098500186C94 /* Filter.swift */,
+				E47EB6A9197B29C600D6ADEA /* GZipCompressor.swift */,
 				E409CFF6197A099600186C94 /* ErrorPage.swift */,
 				E409CFFA197A139600186C94 /* Nothing.swift */,
 				E409CFFC197A149E00186C94 /* Logging.swift */,
@@ -106,7 +116,28 @@
 				E41B3314197AEB0B00F6C188 /* JLRoutes.h */,
 				E41B3315197AEB0B00F6C188 /* JLRoutes.m */,
 			);
+			name = JLRoutes;
+			sourceTree = "<group>";
+		};
+		E47EB6B6197B2DCA00D6ADEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E47EB6B7197B37F600D6ADEA /* Steve Streza */,
+				E4C8CCEC19796BFC000B8FAE /* GCDAsyncSocket */,
+				E41B3313197AEB0B00F6C188 /* JLRoutes */,
+				E47EB6B4197B2DB700D6ADEA /* libz.dylib */,
+			);
+			name = Frameworks;
 			path = JLRoutes;
+			sourceTree = "<group>";
+		};
+		E47EB6B7197B37F600D6ADEA /* Steve Streza */ = {
+			isa = PBXGroup;
+			children = (
+				E47EB6AC197B2D1700D6ADEA /* NSData+BaristaExtensions.h */,
+				E47EB6AD197B2D1700D6ADEA /* NSData+BaristaExtensions.m */,
+			);
+			name = "Steve Streza";
 			sourceTree = "<group>";
 		};
 		E4C8CC87197886BC000B8FAE = {
@@ -135,8 +166,7 @@
 				E4C8CCEF19797D2D000B8FAE /* Extensions */,
 				E409CFF3197A095000186C94 /* Filters */,
 				E4C8CCDB19788706000B8FAE /* Core */,
-				E4C8CCEC19796BFC000B8FAE /* GCDAsyncSocket */,
-				E41B3313197AEB0B00F6C188 /* JLRoutes */,
+				E47EB6B6197B2DCA00D6ADEA /* Frameworks */,
 				E4C8CC94197886BC000B8FAE /* Supporting Files */,
 			);
 			path = SwiftServe;
@@ -186,6 +216,7 @@
 				E4C8CCE419789724000B8FAE /* GCDAsyncSocket.m */,
 			);
 			name = GCDAsyncSocket;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		E4C8CCEF19797D2D000B8FAE /* Extensions */ = {
@@ -212,6 +243,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E47EB6B0197B2D1700D6ADEA /* NSData+BaristaExtensions.h in Headers */,
 				E4C8CC97197886BD000B8FAE /* SwiftServe.h in Headers */,
 				E4C8CCE71978972F000B8FAE /* GCDAsyncSocket.h in Headers */,
 				E41B3316197AEB0B00F6C188 /* JLRoutes.h in Headers */,
@@ -317,6 +349,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4C8CCE519789724000B8FAE /* GCDAsyncSocket.m in Sources */,
+				E47EB6B1197B2D1700D6ADEA /* NSData+BaristaExtensions.m in Sources */,
+				E47EB6AA197B29C600D6ADEA /* GZipCompressor.swift in Sources */,
 				E409CFFD197A149E00186C94 /* Logging.swift in Sources */,
 				E4AA9C7F1979CB1E00D87153 /* HeaderKey.swift in Sources */,
 				E41B3317197AEB0B00F6C188 /* JLRoutes.m in Sources */,
@@ -451,6 +485,11 @@
 				INFOPLIST_FILE = SwiftServe/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+					"$(PROJECT_DIR)/SwiftServe/JLRoutes/OpenSSL-Universal/lib-ios",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -470,6 +509,11 @@
 				INFOPLIST_FILE = SwiftServe/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+					"$(PROJECT_DIR)/SwiftServe/JLRoutes/OpenSSL-Universal/lib-ios",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};

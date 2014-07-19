@@ -17,6 +17,7 @@ enum HeaderKey:String
     case CacheControl = "Cache-Control"
     case Connection = "Connection"
     case Content = "Content"
+    case ContentEncoding = "Content-Encoding"
     case ContentLength = "Content-Length"
     case Cookie = "Cookie"
     case DNT = "DNT"
