@@ -11,16 +11,20 @@ import Foundation
 class Connection: GCDAsyncSocketDelegate
 {
     let socket:GCDAsyncSocket
-    let requestData = NSMutableData()
+    let requestData:NSMutableData
+    
     var request:Request?
+    var response:Response?
     var expectedContentLength:Int?
+    var didSendResponse = false;
     
     init(socket:GCDAsyncSocket)
     {
         self.socket = socket
-        socket.delegate = self
+        requestData = NSMutableData()
         println("Connection initialized.")
         
+        socket.delegate = self
         socket.readDataWithTimeout(10, tag: 0)
     }
     
@@ -29,15 +33,8 @@ class Connection: GCDAsyncSocketDelegate
         if !request
         {
             request = Request(data: data)
-            let contentLength:String? = request!.headers["Content-Length"]
-            
+            var contentLength:String? = request!.value(forHeaderKey: HeaderKey.ContentLength)
             expectedContentLength = contentLength ? contentLength!.toInt() : 0
-            
-            println("headers: \(request!.headers)")
-            println("request method: \(request!.HTTPMethod)")
-            println("request url: \(request!.URL)")
-            println("request body: \(request!.bodyData)")
-            println("request user agent: \(request!.userAgent)")
         }
         else
         {
@@ -47,12 +44,41 @@ class Connection: GCDAsyncSocketDelegate
         if requestData.length == expectedContentLength
         {
             request!.appendRequestData(requestData)
-            // notify server???
+            
+            let statusCode = StatusCode.NOT_IMPLEMENTED
+            response = Response(statusCode: statusCode);
+            
+            // notify server??? start doing something...error for now
+            let appName = NSBundle.mainBundle().infoDictionary.objectForKey(kCFBundleNameKey) as String
+            let version = NSBundle.mainBundle().infoDictionary.objectForKey("CFBundleShortVersionString") as String
+            let host = request!.value(forHeaderKey: HeaderKey.Host)
+            
+            let message = "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">"
+                + "<html><head><title>\(statusCode.code) \(statusCode.description)</title></head><body><h1>\(statusCode.description)</h1>"
+                + "<p>The requested URL \(request!.URL) failed.</p>"
+                + "<hr><address>\(appName)/\(version) (MacOSX) at \(host)</address></body></html>"
+            
+            var messageData = message.bridgeToObjectiveC().dataUsingEncoding(NSUTF8StringEncoding)
+            response!.data.appendData(messageData)
+            
+            sendResponse()
         }
         else
         {
             socket.readDataWithTimeout(10, tag: 0)
         }
+    }
+    
+    func sendResponse()
+    {
+        if didSendResponse
+        {
+            return;
+        }
+        
+        didSendResponse = true;
+        socket.writeData(response!.messageData, withTimeout: 5, tag: 0)
+        socket.disconnect()
     }
 }
 

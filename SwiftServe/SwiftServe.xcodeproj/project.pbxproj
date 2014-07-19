@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E4AA9C7D1979C66D00D87153 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA9C7C1979C66D00D87153 /* Response.swift */; };
+		E4AA9C7F1979CB1E00D87153 /* HeaderKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA9C7E1979CB1E00D87153 /* HeaderKey.swift */; };
 		E4C8CC97197886BD000B8FAE /* SwiftServe.h in Headers */ = {isa = PBXBuildFile; fileRef = E4C8CC96197886BC000B8FAE /* SwiftServe.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E4C8CC9D197886BD000B8FAE /* SwiftServe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C8CC91197886BC000B8FAE /* SwiftServe.framework */; };
 		E4C8CCA4197886BD000B8FAE /* SwiftServeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8CCA3197886BD000B8FAE /* SwiftServeTests.swift */; };
@@ -16,6 +18,7 @@
 		E4C8CCEB19796B1F000B8FAE /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8CCEA19796B1F000B8FAE /* Connection.swift */; };
 		E4C8CCEE19796FE9000B8FAE /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8CCED19796FE9000B8FAE /* Request.swift */; };
 		E4C8CCF219797D4F000B8FAE /* NSDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8CCF119797D4F000B8FAE /* NSDataExtensions.swift */; };
+		E4F6F1E51979E3970090EBC8 /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F6F1E41979E3970090EBC8 /* StatusCode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E4AA9C7C1979C66D00D87153 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		E4AA9C7E1979CB1E00D87153 /* HeaderKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderKey.swift; sourceTree = "<group>"; };
 		E4C8CC91197886BC000B8FAE /* SwiftServe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftServe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4C8CC95197886BC000B8FAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4C8CC96197886BC000B8FAE /* SwiftServe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftServe.h; sourceTree = "<group>"; };
@@ -48,6 +53,7 @@
 		E4C8CCEA19796B1F000B8FAE /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		E4C8CCED19796FE9000B8FAE /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		E4C8CCF119797D4F000B8FAE /* NSDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDataExtensions.swift; sourceTree = "<group>"; };
+		E4F6F1E41979E3970090EBC8 /* StatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				E4C8CC96197886BC000B8FAE /* SwiftServe.h */,
+				E4F6F1E61979E3EA0090EBC8 /* Common */,
 				E4C8CCEF19797D2D000B8FAE /* Extensions */,
 				E4C8CCDB19788706000B8FAE /* Core */,
 				E4C8CCEC19796BFC000B8FAE /* GCDAsyncSocket */,
@@ -130,6 +137,7 @@
 				E4C8CCE019788740000B8FAE /* Server.swift */,
 				E4C8CCEA19796B1F000B8FAE /* Connection.swift */,
 				E4C8CCED19796FE9000B8FAE /* Request.swift */,
+				E4AA9C7C1979C66D00D87153 /* Response.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -149,6 +157,15 @@
 				E4C8CCF119797D4F000B8FAE /* NSDataExtensions.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		E4F6F1E61979E3EA0090EBC8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E4AA9C7E1979CB1E00D87153 /* HeaderKey.swift */,
+				E4F6F1E41979E3970090EBC8 /* StatusCode.swift */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,9 +279,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4C8CCE519789724000B8FAE /* GCDAsyncSocket.m in Sources */,
+				E4AA9C7F1979CB1E00D87153 /* HeaderKey.swift in Sources */,
+				E4F6F1E51979E3970090EBC8 /* StatusCode.swift in Sources */,
 				E4C8CCEE19796FE9000B8FAE /* Request.swift in Sources */,
 				E4C8CCEB19796B1F000B8FAE /* Connection.swift in Sources */,
 				E4C8CCF219797D4F000B8FAE /* NSDataExtensions.swift in Sources */,
+				E4AA9C7D1979C66D00D87153 /* Response.swift in Sources */,
 				E4C8CCE119788740000B8FAE /* Server.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +484,7 @@
 				E4C8CCA9197886BD000B8FAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4C8CCAA197886BD000B8FAE /* Build configuration list for PBXNativeTarget "SwiftServeTests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +493,7 @@
 				E4C8CCAC197886BD000B8FAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

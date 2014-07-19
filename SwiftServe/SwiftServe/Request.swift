@@ -12,20 +12,8 @@ class Request
 {
     let message:CFHTTPMessage
     let headersNSDictionary:NSDictionary
-//    let CRLFData = "\r\n".dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: false)
-//    let CRLFCRLFData = "\r\n\r\n".dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: false)
     
-    var headers:Dictionary<String, String> = Dictionary<String, String>()
-    
-    enum HeaderKey:String
-    {
-        case UserAgent = "User-Agent"
-        case Host = "Host"
-        case Accept = "Accept"
-        case AcceptLanguage = "Accept-Language"
-        case Connection = "Connection"
-        case AcceptEncoding = "AcceptEncoding"
-    }
+    var headers = Dictionary<String, String>()
     
     init(data:NSData)
     {
@@ -46,6 +34,7 @@ class Request
         for (key : AnyObject, value : AnyObject) in headersNSDictionary
         {
             headers[key as String] = value as? String
+//            println("\(key): \(value)")
         }
         
         CFRelease(headersNSDictionary)
@@ -66,9 +55,9 @@ class Request
         return CFHTTPMessageCopyBody(message).takeUnretainedValue()
     }
     
-    var userAgent:String?
+    func value(forHeaderKey key:HeaderKey) -> String?
     {
-        return headers[HeaderKey.UserAgent.toRaw()]
+        return headers[key.toRaw()];
     }
     
     deinit
