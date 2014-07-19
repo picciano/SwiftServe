@@ -22,7 +22,6 @@ class Connection: GCDAsyncSocketDelegate
     {
         self.socket = socket
         requestData = NSMutableData()
-        println("Connection initialized.")
         
         socket.delegate = self
         socket.readDataWithTimeout(10, tag: 0)
@@ -44,24 +43,23 @@ class Connection: GCDAsyncSocketDelegate
         if requestData.length == expectedContentLength
         {
             request!.appendRequestData(requestData)
+            response = Response();
             
-            let statusCode = StatusCode.NOT_IMPLEMENTED
-            response = Response(statusCode: statusCode);
+            let filterChain = FilterChain();
             
-            // notify server??? start doing something...error for now
-            let appName = NSBundle.mainBundle().infoDictionary.objectForKey(kCFBundleNameKey) as String
-            let version = NSBundle.mainBundle().infoDictionary.objectForKey("CFBundleShortVersionString") as String
-            let host = request!.value(forHeaderKey: HeaderKey.Host)
+            let logging:Logging = Logging(request: request!, response: response!)
+            filterChain.add(logging)
             
-            let message = "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">"
-                + "<html><head><title>\(statusCode.code) \(statusCode.description)</title></head><body><h1>\(statusCode.description)</h1>"
-                + "<p>The requested URL \(request!.URL) failed.</p>"
-                + "<hr><address>\(appName)/\(version) (MacOSX) at \(host)</address></body></html>"
+            let errorPage:ErrorPage = ErrorPage(request: request!, response: response!)
+            filterChain.add(errorPage)
             
-            var messageData = message.bridgeToObjectiveC().dataUsingEncoding(NSUTF8StringEncoding)
-            response!.data.appendData(messageData)
+            let nothing:Nothing = Nothing(request: request!, response: response!)
+            filterChain.add(nothing)
+            
+            filterChain.processFilters()
             
             sendResponse()
+            
         }
         else
         {

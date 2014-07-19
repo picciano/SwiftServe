@@ -73,8 +73,6 @@ class Server: GCDAsyncSocketDelegate
     
     func socket(socket:GCDAsyncSocket!, didAcceptNewSocket newSocket:GCDAsyncSocket!)
     {
-        println("New socket received from \(newSocket.connectedHost)")
-        
         let connection = Connection(socket: newSocket)
         connections.append(connection)
     }

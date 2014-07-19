@@ -14,7 +14,7 @@ class Response
     var headers:Dictionary<String, String>
     var statusCode:StatusCode;
     
-    init(statusCode:StatusCode)
+    init(statusCode:StatusCode = StatusCode.NOT_IMPLEMENTED)
     {
         data = NSMutableData()
         
