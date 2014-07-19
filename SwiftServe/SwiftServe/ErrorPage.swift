@@ -30,10 +30,20 @@ class ErrorPage:Filter
         let message = "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">"
             + "<html><head><title>\(connection.response!.statusCode.code) \(connection.response!.statusCode.description)</title></head>"
             + "<body><h1>\(connection.response!.statusCode.description)</h1>"
-            + "<p>The requested URL \(connection.request!.URL) failed.</p>"
+            + "<p>The request \(requestString(connection)) failed.</p>"
             + "<hr><address>\(appName)/\(version) (MacOSX) at \(host)</address></body></html>"
         
         var messageData = message.bridgeToObjectiveC().dataUsingEncoding(NSUTF8StringEncoding)
         connection.response!.data.appendData(messageData)
+    }
+    
+    func requestString(connection: Connection) -> String
+    {
+        let method = connection.request!.HTTPMethod
+        let path = connection.request!.URL.path
+        let version = connection.request!.version
+        
+        let request = "\"\(method) \(path) \(version)\""
+        return request
     }
 }

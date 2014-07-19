@@ -12,15 +12,22 @@ class Logging:Filter
 {
     override func processResponse(connection: Connection)
     {
+        println(logEntry(connection))
+    }
+    
+    func logEntry(connection: Connection) -> String
+    {
         let host = connection.socket.connectedHost
-        let ident = "-"
-        let user = "-"
+        let ident = "-" //TODO: Implement Ident
+        let user = "-" //TODO: Get Remote-User
         let date = NSDate()
         let method = connection.request!.HTTPMethod
         let path = connection.request!.URL.path
         let version = connection.request!.version
         let responseCode = connection.response!.statusCode.code
         let contentLength = connection.response!.messageData.length
-        println("\(host) \(ident) \(user) [\(date)] \"\(method) \(path) \(version)\" \(responseCode) \(contentLength)")
+        
+        let log = "\(host) \(ident) \(user) [\(date)] \"\(method) \(path) \(version)\" \(responseCode) \(contentLength)"
+        return log
     }
 }
