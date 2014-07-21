@@ -25,7 +25,6 @@
 //
 
 #import "NSData+BaristaExtensions.h"
-#import <CommonCrypto/CommonCrypto.h>
 #include <zlib.h>
 
 @implementation NSData (BaristaExtensions)

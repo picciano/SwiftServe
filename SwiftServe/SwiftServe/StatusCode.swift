@@ -53,4 +53,6 @@ struct StatusCode
     static let SERVICE_UNAVAILABLE = StatusCode(code: 503, description:"Service Unavailable")
     static let GATEWAY_TIMEOUT = StatusCode(code: 504, description:"Gateway Timeout")
     static let HTTP_VERSION_NOT_SUPPORTED = StatusCode(code: 505, description:"HTTP Version Not Supported")
+    
+    static let NOT_SET = StatusCode(code: 0, description:"Status Not Set")
 }

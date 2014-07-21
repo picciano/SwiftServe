@@ -12,12 +12,12 @@ class GZipCompressor:Filter
 {
     override func processResponse(connection:Connection)
     {
-        var data = connection.response!.data
+        let data = connection.response!.data
         
         if data != nil && shouldGZipResponse(connection)
         {
             var compressedData = data.barista_gzipDeflate()
-            if compressedData != nil && !compressedData.isEqualToData(data)
+            if compressedData != nil && !compressedData.isEqualToData(data) && compressedData.length < data.length
             {
                 connection.response!.data.setData(compressedData)
                 connection.response!.setValue("gzip", forHeaderKey: HeaderKey.ContentEncoding)
@@ -27,7 +27,7 @@ class GZipCompressor:Filter
     
     func shouldGZipResponse(connection:Connection) -> Bool
     {
-        var acceptEncoding:String? = connection.request!.value(forHeaderKey: HeaderKey.AcceptEncoding)
+        let acceptEncoding:String? = connection.request!.value(forHeaderKey: HeaderKey.AcceptEncoding)
         return acceptEncoding && acceptEncoding!.rangeOfString("gzip")
     }
 }

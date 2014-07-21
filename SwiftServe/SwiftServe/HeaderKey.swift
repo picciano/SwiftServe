@@ -19,6 +19,7 @@ enum HeaderKey:String
     case Content = "Content"
     case ContentEncoding = "Content-Encoding"
     case ContentLength = "Content-Length"
+    case ContentType = "Content-Type"
     case Cookie = "Cookie"
     case DNT = "DNT"
     case Host = "Host"

@@ -40,12 +40,12 @@ class Request:Printable
         CFRelease(headersNSDictionary)
     }
     
-    var HTTPMethod:String
+    var httpMethod:String
     {
         return CFHTTPMessageCopyRequestMethod(message).takeUnretainedValue()
     }
     
-    var URL:NSURL
+    var url:NSURL
     {
         return CFHTTPMessageCopyRequestURL(message).takeUnretainedValue()
     }
@@ -55,7 +55,7 @@ class Request:Printable
         return CFHTTPMessageCopyVersion(message).takeUnretainedValue()
     }
     
-    var bodyData:NSData
+    var data:NSData
     {
         return CFHTTPMessageCopyBody(message).takeUnretainedValue()
     }
@@ -67,7 +67,7 @@ class Request:Printable
     
     var description:String
     {
-        return "\(HTTPMethod) \(URL.path) \(version)"
+        return "\(httpMethod) \(url.path) \(version)"
     }
     
     deinit

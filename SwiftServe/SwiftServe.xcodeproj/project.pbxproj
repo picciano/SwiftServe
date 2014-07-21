@@ -13,6 +13,7 @@
 		E409CFFD197A149E00186C94 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409CFFC197A149E00186C94 /* Logging.swift */; };
 		E41B3316197AEB0B00F6C188 /* JLRoutes.h in Headers */ = {isa = PBXBuildFile; fileRef = E41B3314197AEB0B00F6C188 /* JLRoutes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E41B3317197AEB0B00F6C188 /* JLRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B3315197AEB0B00F6C188 /* JLRoutes.m */; };
+		E46522DF197DCB29005AEE9F /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46522DE197DCB29005AEE9F /* HTTPMethod.swift */; };
 		E47EB6AA197B29C600D6ADEA /* GZipCompressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47EB6A9197B29C600D6ADEA /* GZipCompressor.swift */; };
 		E47EB6B0197B2D1700D6ADEA /* NSData+BaristaExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = E47EB6AC197B2D1700D6ADEA /* NSData+BaristaExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E47EB6B1197B2D1700D6ADEA /* NSData+BaristaExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E47EB6AD197B2D1700D6ADEA /* NSData+BaristaExtensions.m */; };
@@ -28,6 +29,7 @@
 		E4C8CCEB19796B1F000B8FAE /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8CCEA19796B1F000B8FAE /* Connection.swift */; };
 		E4C8CCEE19796FE9000B8FAE /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8CCED19796FE9000B8FAE /* Request.swift */; };
 		E4C8CCF219797D4F000B8FAE /* NSDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C8CCF119797D4F000B8FAE /* NSDataExtensions.swift */; };
+		E4EFA981197D7EA80077C7F8 /* JSONSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EFA980197D7EA80077C7F8 /* JSONSerialization.swift */; };
 		E4F6F1E51979E3970090EBC8 /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F6F1E41979E3970090EBC8 /* StatusCode.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +57,7 @@
 		E409CFFC197A149E00186C94 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		E41B3314197AEB0B00F6C188 /* JLRoutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLRoutes.h; sourceTree = "<group>"; };
 		E41B3315197AEB0B00F6C188 /* JLRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLRoutes.m; sourceTree = "<group>"; };
+		E46522DE197DCB29005AEE9F /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		E47EB6A9197B29C600D6ADEA /* GZipCompressor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GZipCompressor.swift; sourceTree = "<group>"; };
 		E47EB6AC197B2D1700D6ADEA /* NSData+BaristaExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+BaristaExtensions.h"; path = "../NSData+BaristaExtensions.h"; sourceTree = "<group>"; };
 		E47EB6AD197B2D1700D6ADEA /* NSData+BaristaExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+BaristaExtensions.m"; path = "../NSData+BaristaExtensions.m"; sourceTree = "<group>"; };
@@ -73,6 +76,7 @@
 		E4C8CCEA19796B1F000B8FAE /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		E4C8CCED19796FE9000B8FAE /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		E4C8CCF119797D4F000B8FAE /* NSDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDataExtensions.swift; sourceTree = "<group>"; };
+		E4EFA980197D7EA80077C7F8 /* JSONSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSerialization.swift; sourceTree = "<group>"; };
 		E4F6F1E41979E3970090EBC8 /* StatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +107,7 @@
 				E47EB6A9197B29C600D6ADEA /* GZipCompressor.swift */,
 				E409CFF6197A099600186C94 /* ErrorPage.swift */,
 				E409CFFC197A149E00186C94 /* Logging.swift */,
+				E4EFA980197D7EA80077C7F8 /* JSONSerialization.swift */,
 			);
 			name = Filters;
 			sourceTree = "<group>";
@@ -228,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				E4AA9C7E1979CB1E00D87153 /* HeaderKey.swift */,
+				E46522DE197DCB29005AEE9F /* HTTPMethod.swift */,
 				E4F6F1E41979E3970090EBC8 /* StatusCode.swift */,
 			);
 			name = Common;
@@ -355,7 +361,9 @@
 				E4C8CCEE19796FE9000B8FAE /* Request.swift in Sources */,
 				E4C8CCEB19796B1F000B8FAE /* Connection.swift in Sources */,
 				E409CFF7197A099600186C94 /* ErrorPage.swift in Sources */,
+				E4EFA981197D7EA80077C7F8 /* JSONSerialization.swift in Sources */,
 				E409CFF9197A0A3900186C94 /* FilterChain.swift in Sources */,
+				E46522DF197DCB29005AEE9F /* HTTPMethod.swift in Sources */,
 				E4C8CCF219797D4F000B8FAE /* NSDataExtensions.swift in Sources */,
 				E4AA9C7D1979C66D00D87153 /* Response.swift in Sources */,
 				E409CFF5197A098500186C94 /* Filter.swift in Sources */,
@@ -484,7 +492,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
-					"$(PROJECT_DIR)/SwiftServe/JLRoutes/OpenSSL-Universal/lib-ios",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -508,7 +515,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
-					"$(PROJECT_DIR)/SwiftServe/JLRoutes/OpenSSL-Universal/lib-ios",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

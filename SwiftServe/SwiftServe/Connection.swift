@@ -13,6 +13,7 @@ class Connection: GCDAsyncSocketDelegate
     let filterChain:FilterChain;
     let socket:GCDAsyncSocket
     let requestData:NSMutableData
+    var customValues = Dictionary<String, Any>()
     
     var request:Request?
     var response:Response?

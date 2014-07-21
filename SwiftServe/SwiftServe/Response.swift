@@ -14,7 +14,7 @@ class Response:Printable
     var headers:Dictionary<String, String>
     var statusCode:StatusCode;
     
-    init(statusCode:StatusCode = StatusCode.NOT_IMPLEMENTED)
+    init(statusCode:StatusCode = StatusCode.NOT_SET)
     {
         data = NSMutableData()
         

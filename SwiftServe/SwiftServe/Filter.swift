@@ -20,7 +20,7 @@ class Filter
     
     func processFilter(connection:Connection)
     {
-        if !routes || routes!.canRouteURL(connection.request!.URL)
+        if !routes || routes!.canRouteURL(connection.request!.url)
         {
             processRequest(connection)
         }
@@ -30,7 +30,7 @@ class Filter
             nextFilter!.processFilter(connection)
         }
         
-        if !routes || routes!.canRouteURL(connection.request!.URL)
+        if !routes || routes!.canRouteURL(connection.request!.url)
         {
             processResponse(connection)
         }
