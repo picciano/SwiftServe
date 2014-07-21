@@ -19,7 +19,11 @@ class ErrorPage:Filter
         }
         
         switch connection.response!.statusCode.code {
-        case 0...199, 300...599:
+        case StatusCode.NOT_SET.code:
+            connection.response!.statusCode = StatusCode.NOT_IMPLEMENTED
+            fallthrough
+        
+        case 1...199, 300...599:
             sendErrorPage(connection)
             
         default:
