@@ -19,7 +19,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         server.filterChain.add(Logging())
         server.filterChain.add(GZipCompressor())
         server.filterChain.add(ErrorPage())
-        server.filterChain.add(Nothing())
         
         startServer(self)
     }

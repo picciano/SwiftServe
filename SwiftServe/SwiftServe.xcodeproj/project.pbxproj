@@ -10,7 +10,6 @@
 		E409CFF5197A098500186C94 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409CFF4197A098500186C94 /* Filter.swift */; };
 		E409CFF7197A099600186C94 /* ErrorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409CFF6197A099600186C94 /* ErrorPage.swift */; };
 		E409CFF9197A0A3900186C94 /* FilterChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409CFF8197A0A3900186C94 /* FilterChain.swift */; };
-		E409CFFB197A139600186C94 /* Nothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409CFFA197A139600186C94 /* Nothing.swift */; };
 		E409CFFD197A149E00186C94 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E409CFFC197A149E00186C94 /* Logging.swift */; };
 		E41B3316197AEB0B00F6C188 /* JLRoutes.h in Headers */ = {isa = PBXBuildFile; fileRef = E41B3314197AEB0B00F6C188 /* JLRoutes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E41B3317197AEB0B00F6C188 /* JLRoutes.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B3315197AEB0B00F6C188 /* JLRoutes.m */; };
@@ -53,7 +52,6 @@
 		E409CFF4197A098500186C94 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		E409CFF6197A099600186C94 /* ErrorPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorPage.swift; sourceTree = "<group>"; };
 		E409CFF8197A0A3900186C94 /* FilterChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterChain.swift; sourceTree = "<group>"; };
-		E409CFFA197A139600186C94 /* Nothing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nothing.swift; sourceTree = "<group>"; };
 		E409CFFC197A149E00186C94 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		E41B3314197AEB0B00F6C188 /* JLRoutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLRoutes.h; sourceTree = "<group>"; };
 		E41B3315197AEB0B00F6C188 /* JLRoutes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLRoutes.m; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 				E409CFF4197A098500186C94 /* Filter.swift */,
 				E47EB6A9197B29C600D6ADEA /* GZipCompressor.swift */,
 				E409CFF6197A099600186C94 /* ErrorPage.swift */,
-				E409CFFA197A139600186C94 /* Nothing.swift */,
 				E409CFFC197A149E00186C94 /* Logging.swift */,
 			);
 			name = Filters;
@@ -359,7 +356,6 @@
 				E4C8CCEB19796B1F000B8FAE /* Connection.swift in Sources */,
 				E409CFF7197A099600186C94 /* ErrorPage.swift in Sources */,
 				E409CFF9197A0A3900186C94 /* FilterChain.swift in Sources */,
-				E409CFFB197A139600186C94 /* Nothing.swift in Sources */,
 				E4C8CCF219797D4F000B8FAE /* NSDataExtensions.swift in Sources */,
 				E4AA9C7D1979C66D00D87153 /* Response.swift in Sources */,
 				E409CFF5197A098500186C94 /* Filter.swift in Sources */,

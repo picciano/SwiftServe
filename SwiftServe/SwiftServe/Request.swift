@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Request
+class Request:Printable
 {
     let message:CFHTTPMessage
     let headersNSDictionary:NSDictionary
@@ -63,6 +63,11 @@ class Request
     func value(forHeaderKey key:HeaderKey) -> String?
     {
         return headers[key.toRaw()];
+    }
+    
+    var description:String
+    {
+        return "\(HTTPMethod) \(URL.path) \(version)"
     }
     
     deinit

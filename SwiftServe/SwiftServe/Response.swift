@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Response
+class Response:Printable
 {
     let data:NSMutableData
     var headers:Dictionary<String, String>
@@ -59,5 +59,10 @@ class Response
     func value(forHeaderKey key:HeaderKey) -> String?
     {
         return headers[key.toRaw()];
+    }
+    
+    var description:String
+    {
+        return "\(statusCode.code) \(data.length)"
     }
 }

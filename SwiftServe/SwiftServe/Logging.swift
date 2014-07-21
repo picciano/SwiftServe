@@ -21,13 +21,8 @@ class Logging:Filter
         let ident = "-" //TODO: Implement Ident
         let user = "-" //TODO: Get Remote-User
         let date = NSDate()
-        let method = connection.request!.HTTPMethod
-        let path = connection.request!.URL.path
-        let version = connection.request!.version
-        let responseCode = connection.response!.statusCode.code
-        let contentLength = connection.response!.messageData.length
         
-        let log = "\(host) \(ident) \(user) [\(date)] \"\(method) \(path) \(version)\" \(responseCode) \(contentLength)"
+        let log = "\(host) \(ident) \(user) [\(date)] \"\(connection.request!)\" \(connection.response!)"
         return log
     }
 }
