@@ -10,6 +10,8 @@ import Foundation
 
 class Logging:Filter
 {
+    let df = NSDateFormatter()
+    
     var dateFormatString:String
     
     init(dateFormatString:String = "MMM/dd/yyyy hh:mm:ss ZZZZ")
@@ -27,13 +29,18 @@ class Logging:Filter
         let host:String = connection.socket.connectedHost
         let ident:String = "-" //TODO: Implement Ident
         let user:String = "-" //TODO: Get Remote-User
-        let df = NSDateFormatter()
-        df.dateFormat = dateFormatString
-        let dateString:String = df.stringFromDate(NSDate())
+        let date:String = dateAsFormattedString()
         let requestDescription:String = connection.request!.description
         let responseDescription:String = connection.response!.description
         
-        let log = "\(host) \(ident) \(user) [\(dateString)] \"\(requestDescription)\" \(responseDescription)"
+        let log = "\(host) \(ident) \(user) [\(date)] \"\(requestDescription)\" \(responseDescription)"
         return log
+    }
+    
+    func dateAsFormattedString() -> String
+    {
+        df.dateFormat = dateFormatString
+        let dateString:String = df.stringFromDate(NSDate())
+        return dateString
     }
 }
