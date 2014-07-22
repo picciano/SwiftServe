@@ -26,14 +26,13 @@ class Logging:Filter
     
     func logEntry(connection: Connection) -> String
     {
-        let host:String = connection.socket.connectedHost
-        let ident:String = "-" //TODO: Implement Ident
+        let host:String = connection.socket.connectedHost=
         let user:String = "-" //TODO: Get Remote-User
         let date:String = dateAsFormattedString()
         let requestDescription:String = connection.request!.description
         let responseDescription:String = connection.response!.description
         
-        let log = "\(host) \(ident) \(user) [\(date)] \"\(requestDescription)\" \(responseDescription)"
+        let log = "\(host) \(user) [\(date)] \"\(requestDescription)\" \(responseDescription)"
         return log
     }
     
