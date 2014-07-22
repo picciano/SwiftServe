@@ -36,7 +36,6 @@ class ErrorPage:Filter
         let appName = NSBundle.mainBundle().infoDictionary.objectForKey(kCFBundleNameKey) as String
         let version = NSBundle.mainBundle().infoDictionary.objectForKey("CFBundleShortVersionString") as String
         let host = connection.request!.value(forHeaderKey: HeaderKey.Host)
-        
         let statusCodeCode:String = String(connection.response!.statusCode.code)
         let statusCodeDescription:String = connection.response!.statusCode.description
         let requestDescription:String = connection.request!.description
