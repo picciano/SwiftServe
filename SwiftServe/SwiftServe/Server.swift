@@ -23,20 +23,14 @@ class Server: GCDAsyncSocketDelegate
         }
         self.port = port
         
-        // leaks
-        // println("Server created with host: \(self.boundHost) and port: \(self.port).")
-        
-        var message = "Server created with host: "
-        if self.boundHost
+        if let constBoundHost = self.boundHost
         {
-            message += self.boundHost!
+            println("Server created with host: \(constBoundHost) and port: \(self.port).")
         }
         else
         {
-            message += "*"
+            println("Server created with host: * and port: \(self.port).")
         }
-        message += " and port: \(self.port)"
-        println(message)
     }
     
     convenience init(port:UInt16)
