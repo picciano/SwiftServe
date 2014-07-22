@@ -37,11 +37,29 @@ class ErrorPage:Filter
         let version = NSBundle.mainBundle().infoDictionary.objectForKey("CFBundleShortVersionString") as String
         let host = connection.request!.value(forHeaderKey: HeaderKey.Host)
         
-        let message = "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">"
-            + "<html><head><title>\(connection.response!.statusCode.code) \(connection.response!.statusCode.description)</title></head>"
-            + "<body><h1>\(connection.response!.statusCode.description)</h1>"
-            + "<p>The request \"\(connection.request!)\" from \(connection.socket.connectedHost) failed.</p>"
-            + "<hr><address>\(appName)/\(version) (MacOSX) at \(host)</address></body></html>"
+        let statusCodeCode:String = String(connection.response!.statusCode.code)
+        let statusCodeDescription:String = connection.response!.statusCode.description
+        let requestDescription:String = connection.request!.description
+        let connectedHost:String = connection.socket.connectedHost
+
+        var message:String
+
+        if let constHost = host
+        {
+            message = "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">"
+                + "<html><head><title>\(statusCodeCode) \(statusCodeDescription)</title></head>"
+                + "<body><h1>\(statusCodeDescription)</h1>"
+                + "<p>The request \"\(requestDescription)\" from \(connectedHost) failed.</p>"
+                + "<hr><address>\(appName)/\(version) (MacOSX) at \(constHost)</address></body></html>"
+        }
+        else
+        {
+            message = "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">"
+                + "<html><head><title>\(connection.response!.statusCode.code) \(connection.response!.statusCode.description)</title></head>"
+                + "<body><h1>\(connection.response!.statusCode.description)</h1>"
+                + "<p>The request \"\(connection.request!)\" from \(connection.socket.connectedHost) failed.</p>"
+                + "<hr><address>\(appName)/\(version) (MacOSX)</address></body></html>"
+        }
         
         var messageData = message.bridgeToObjectiveC().dataUsingEncoding(NSUTF8StringEncoding)
         connection.response!.data.appendData(messageData)
