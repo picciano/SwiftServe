@@ -11,9 +11,3 @@ SwiftServe is nowhere near complete. Some ofthe next items to include are:
 * Object-relational mapping for Core Data
 * Registration and processing of REST endpoints
 * many more...and I am seeking a collaborator or two
-
-Bugs
-====
-* Memory leak, connection not removed from server.connections after it's closed
-
-
