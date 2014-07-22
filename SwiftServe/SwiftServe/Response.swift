@@ -27,7 +27,7 @@ class Response:Printable
     var message:CFHTTPMessageRef
     {
         // Create the response object reference
-        let message = CFHTTPMessageCreateResponse(nil, statusCode.code, "", kCFHTTPVersion1_1).takeUnretainedValue()
+        let message = CFHTTPMessageCreateResponse(nil, statusCode.code, "", kCFHTTPVersion1_1).takeRetainedValue()
             
         // Set the content length
         CFHTTPMessageSetHeaderFieldValue(message, HeaderKey.ContentLength.toRaw() as NSString, "\(data.length)" as NSString);
@@ -46,9 +46,7 @@ class Response:Printable
     
     var messageData:NSData
     {
-    //TODO: collapse
-        var dataRef = CFHTTPMessageCopySerializedMessage(message).takeUnretainedValue()
-        return dataRef
+        return CFHTTPMessageCopySerializedMessage(message).takeRetainedValue()
     }
     
     func setValue(value:String?, forHeaderKey key:HeaderKey)

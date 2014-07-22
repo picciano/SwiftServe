@@ -66,6 +66,7 @@ class Connection: GCDAsyncSocketDelegate
         
         didSendResponse = true;
         socket.writeData(response!.messageData, withTimeout: 5, tag: 0)
+        socket.delegate = nil
         socket.disconnect()
     }
 }

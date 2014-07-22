@@ -11,17 +11,24 @@ import Foundation
 class Request:Printable
 {
     let message:CFHTTPMessage
-    let headersNSDictionary:NSDictionary
-    
     var headers = Dictionary<String, String>()
     
     init(data:NSData)
     {
         message = CFHTTPMessageCreateEmpty(nil, 1).takeRetainedValue()
         CFHTTPMessageAppendBytes(message, data.byteDataAsUInt8(), data.length)
-        
-        headersNSDictionary = CFHTTPMessageCopyAllHeaderFields(message).takeUnretainedValue()
         parseHeaders()
+    }
+    
+    func parseHeaders()
+    {
+        let headersNSDictionary:NSDictionary = CFHTTPMessageCopyAllHeaderFields(message).takeRetainedValue()
+        
+        for (key : AnyObject, value : AnyObject) in headersNSDictionary
+        {
+            headers[key as String] = value as? String
+            //            println("\(key): \(value)")
+        }
     }
     
     func appendRequestData(data:NSData)
@@ -29,35 +36,24 @@ class Request:Printable
         CFHTTPMessageAppendBytes(message, data.byteDataAsUInt8(), data.length)
     }
     
-    func parseHeaders()
-    {
-        for (key : AnyObject, value : AnyObject) in headersNSDictionary
-        {
-            headers[key as String] = value as? String
-//            println("\(key): \(value)")
-        }
-        
-        CFRelease(headersNSDictionary)
-    }
-    
     var httpMethod:String
     {
-        return CFHTTPMessageCopyRequestMethod(message).takeUnretainedValue()
+        return CFHTTPMessageCopyRequestMethod(message).takeRetainedValue()
     }
     
     var url:NSURL
     {
-        return CFHTTPMessageCopyRequestURL(message).takeUnretainedValue()
+        return CFHTTPMessageCopyRequestURL(message).takeRetainedValue()
     }
     
     var version:String
     {
-        return CFHTTPMessageCopyVersion(message).takeUnretainedValue()
+        return CFHTTPMessageCopyVersion(message).takeRetainedValue()
     }
     
     var data:NSData
     {
-        return CFHTTPMessageCopyBody(message).takeUnretainedValue()
+        return CFHTTPMessageCopyBody(message).takeRetainedValue()
     }
     
     func value(forHeaderKey key:HeaderKey) -> String?
@@ -67,11 +63,7 @@ class Request:Printable
     
     var description:String
     {
-        return "\(httpMethod) \(url.path) \(version)"
-    }
-    
-    deinit
-    {
-        CFRelease(message)
+        let result = httpMethod + " " + url.path + " " + version
+        return result
     }
 }

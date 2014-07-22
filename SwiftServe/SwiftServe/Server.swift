@@ -14,7 +14,6 @@ class Server: GCDAsyncSocketDelegate
     let boundHost:String?
     let port:UInt16
     @lazy var socket:GCDAsyncSocket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
-    var connections = Connection[]()
     var isListening = false
     
     init(boundHost: String?, port: UInt16)
@@ -24,7 +23,20 @@ class Server: GCDAsyncSocketDelegate
         }
         self.port = port
         
-        println("Server created with host: \(self.boundHost) and port: \(self.port).")
+        // leaks
+        // println("Server created with host: \(self.boundHost) and port: \(self.port).")
+        
+        var message = "Server created with host: "
+        if self.boundHost
+        {
+            message += self.boundHost!
+        }
+        else
+        {
+            message += "*"
+        }
+        message += " and port: \(self.port)"
+        println(message)
     }
     
     convenience init(port:UInt16)
@@ -59,7 +71,6 @@ class Server: GCDAsyncSocketDelegate
         {
             socket.disconnect()
             isListening = false
-            connections.removeAll(keepCapacity: false)
             return true
         }
         return false
@@ -75,8 +86,7 @@ class Server: GCDAsyncSocketDelegate
     
     func socket(socket:GCDAsyncSocket!, didAcceptNewSocket newSocket:GCDAsyncSocket!)
     {
-        let connection = Connection(socket: newSocket, filterChain:filterChain)
-        connections.append(connection)
+        Connection(socket: newSocket, filterChain:filterChain)
     }
     
 }
