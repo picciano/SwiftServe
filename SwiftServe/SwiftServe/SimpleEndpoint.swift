@@ -18,14 +18,14 @@ class SimpleEndpoint:Router
             connection.response!.statusCode = StatusCode.OK
             
             let response = ["name":"Anthony", "answer":id, "keys":["asdf", "qwerty", "dvorak"] ]
-            connection.setJSONResponseObject(response as NSDictionary)
+            connection.setJSONResponseObject(response)
         }
         else
         {
             connection.response!.statusCode = StatusCode.BAD_REQUEST
             
             let response = ["message":"The id must be specified as numeric."]
-            connection.setJSONResponseObject(response as NSDictionary)
+            connection.setJSONResponseObject(response)
         }
         
         return true
