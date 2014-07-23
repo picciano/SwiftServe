@@ -60,7 +60,7 @@ class ErrorPage:Filter
                 + "<hr><address>\(appName)/\(version) (MacOSX)</address></body></html>"
         }
         
-        var messageData = message.bridgeToObjectiveC().dataUsingEncoding(NSUTF8StringEncoding)
+        let messageData = message.bridgeToObjectiveC().dataUsingEncoding(NSUTF8StringEncoding)
         connection.response!.data.appendData(messageData)
     }
 }

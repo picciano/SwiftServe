@@ -16,7 +16,7 @@ extension Connection
     {
     func JSONRequestObject() -> NSDictionary?
     {
-        var value:Any? = customValues[jsonRequestObjectKey]
+        let value:Any? = customValues[jsonRequestObjectKey]
         return value as? NSDictionary
     }
     
@@ -27,7 +27,7 @@ extension Connection
     
     func JSONResponseObject() -> NSDictionary?
     {
-        var value:Any? = customValues[jsonResponseObjectKey]
+        let value:Any? = customValues[jsonResponseObjectKey]
         return value as? NSDictionary
     }
     
@@ -76,9 +76,7 @@ class JSONSerialization:Filter
             {
                 connection.response!.statusCode = StatusCode.BAD_REQUEST
                 
-                var errorMessage = NSMutableDictionary()
-                errorMessage.setValue("Missing or invalid JSON was received.", forKey: "message")
-                errorMessage.setValue("\(error)", forKey: "error")
+                let errorMessage = [ "message":"Missing or invalid JSON was received.", "debugDescription":error!.debugDescription ]
                 connection.setJSONResponseObject(errorMessage);
                 
                 return
@@ -116,8 +114,7 @@ class JSONSerialization:Filter
                 // Missing response object
                 connection.response!.statusCode = StatusCode.NOT_IMPLEMENTED
                 
-                var errorMessage = NSMutableDictionary()
-                errorMessage.setValue("Server did not return a response.", forKey: "message")
+                let errorMessage = [ "message":"Server did not return a response." ]
                 connection.setJSONResponseObject(errorMessage);
                 
                 processResponse(connection)

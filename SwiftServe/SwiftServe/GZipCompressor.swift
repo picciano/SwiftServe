@@ -16,7 +16,7 @@ class GZipCompressor:Filter
         
         if data != nil && shouldGZipResponse(connection)
         {
-            var compressedData = data.barista_gzipDeflate()
+            let compressedData = data.barista_gzipDeflate()
             if compressedData != nil && !compressedData.isEqualToData(data) && compressedData.length < data.length
             {
                 connection.response!.data.setData(compressedData)
