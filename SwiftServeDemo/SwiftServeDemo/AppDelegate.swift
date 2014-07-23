@@ -21,6 +21,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         server.filterChain.add(ErrorPage())
         server.filterChain.add(JSONSerialization(usePrettyPrint: true))
         
+        var simpleEndpoint = SimpleEndpoint()
+//        simpleEndpoint.includePath("/*")
+        simpleEndpoint.includePath("/simple")
+        simpleEndpoint.includePath("/complex/:id")
+        server.filterChain.add(simpleEndpoint)
+        
         startServer(self)
     }
     

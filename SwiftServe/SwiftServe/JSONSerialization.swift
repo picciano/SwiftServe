@@ -8,28 +8,32 @@
 
 import Foundation
 
+// TODO: class variable are not yet supported
+let jsonRequestObjectKey = "JSONRequestObject"
+let jsonResponseObjectKey = "JSONResponseObject"
+
 extension Connection
     {
     func JSONRequestObject() -> NSDictionary?
     {
-        var value:Any? = customValues["JSONRequestObject"]
+        var value:Any? = customValues[jsonRequestObjectKey]
         return value as? NSDictionary
     }
     
     func setJSONRequestObject(object:NSDictionary)
     {
-        customValues["JSONRequestObject"] = object
+        customValues[jsonRequestObjectKey] = object
     }
     
     func JSONResponseObject() -> NSDictionary?
     {
-        var value:Any? = customValues["JSONResponseObject"]
+        var value:Any? = customValues[jsonResponseObjectKey]
         return value as? NSDictionary
     }
     
     func setJSONResponseObject(object:NSDictionary)
     {
-        customValues["JSONResponseObject"] = object
+        customValues[jsonResponseObjectKey] = object
     }
 }
 
@@ -52,7 +56,7 @@ class JSONSerialization:Filter
     override func processRequest(connection: Connection)
     {
         let contentType:String? = connection.request!.value(forHeaderKey: HeaderKey.ContentType)
-        let contentTypeIsJSON = contentType && contentType!.rangeOfString("application/json")
+        let contentTypeIsJSON = contentType && contentType!.rangeOfString(MimeType.APPLICATION_JSON.string)
         let httpMethod:String = connection.request!.httpMethod
         
         if httpMethod != HTTPMethod.POST.toRaw()
@@ -91,9 +95,9 @@ class JSONSerialization:Filter
     {
         let responseObject = connection.JSONResponseObject()
         let accept:String? = connection.request!.value(forHeaderKey: HeaderKey.Accept)
-        let acceptJSON = accept && accept!.rangeOfString("application/json")
+        let acceptJSON = accept && accept!.rangeOfString(MimeType.APPLICATION_JSON.string)
         
-        if acceptJSON
+        if acceptJSON || responseObject
         {
             if responseObject
             {
@@ -104,7 +108,7 @@ class JSONSerialization:Filter
                 {
                     connection.response!.statusCode = StatusCode.OK
                 }
-                connection.response!.setValue("application/json", forHeaderKey: HeaderKey.ContentType)
+                connection.response!.setValue(MimeType.APPLICATION_JSON.string, forHeaderKey: HeaderKey.ContentType)
                 connection.response!.data.appendData(data)
             }
             else

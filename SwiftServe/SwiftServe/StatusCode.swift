@@ -10,8 +10,8 @@ import Foundation
 
 struct StatusCode
 {
-    var code:Int
-    var description:String
+    let code:Int
+    let description:String
     
     static let CONTINUE = StatusCode(code:100, description:"Continue")
     static let SWITCHING_PROTOCOLS = StatusCode(code: 101, description:"Switching Protocols")

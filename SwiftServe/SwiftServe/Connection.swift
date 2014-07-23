@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Connection: GCDAsyncSocketDelegate
+class Connection: NSObject, GCDAsyncSocketDelegate
 {
     let filterChain:FilterChain;
     let socket:GCDAsyncSocket
@@ -25,6 +25,7 @@ class Connection: GCDAsyncSocketDelegate
         self.socket = socket
         self.filterChain = filterChain
         requestData = NSMutableData()
+        super.init()
         
         socket.delegate = self
         socket.readDataWithTimeout(10, tag: 0)

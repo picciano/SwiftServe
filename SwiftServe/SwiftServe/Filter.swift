@@ -8,6 +8,9 @@
 
 import Foundation
 
+// TODO: class variable are not yet supported
+let connectionKey = "SwiftServe.Connection"
+
 class Filter
 {
     var routes:JLRoutes?
@@ -24,7 +27,13 @@ class Filter
         {
             processRequest(connection)
         }
-            
+        
+        if routes
+        {
+            let parameters = [connectionKey:connection]
+            let handled = routes!.routeURL(connection.request!.url, withParameters: parameters)
+        }
+        
         if nextFilter
         {
             nextFilter!.processFilter(connection)
@@ -46,14 +55,30 @@ class Filter
         // override this method in subclasses
     }
     
-    func addRoute(route:String)
+    func processRoutes(connection:Connection, parameters:Dictionary<NSObject,AnyObject>) -> Bool
+    {
+        // override this method in subclasses
+        return true
+    }
+    
+    func includePath(path:String)
     {
         if !routes
         {
-            var classname = NSString(UTF8String: object_getClassName(self))
+            let classname = NSString(UTF8String: object_getClassName(self))
             routes = JLRoutes(forScheme: classname)
         }
         
-        routes!.addRoute(route, handler: { parameters in return (true as ObjCBool)} )
+        routes!.addRoute(path, handler: handler)
+    }
+    
+    func handler(parameters:NSDictionary!) -> Bool
+    {
+        if let connection = parameters[connectionKey] as? Connection
+        {
+            return processRoutes(connection, parameters: parameters)
+        }
+        
+        return false
     }
 }

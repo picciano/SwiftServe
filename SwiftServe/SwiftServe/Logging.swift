@@ -26,7 +26,7 @@ class Logging:Filter
     
     func logEntry(connection: Connection) -> String
     {
-        let host:String = connection.socket.connectedHost=
+        let host:String = connection.socket.connectedHost
         let user:String = "-" //TODO: Get Remote-User
         let date:String = dateAsFormattedString()
         let requestDescription:String = connection.request!.description
