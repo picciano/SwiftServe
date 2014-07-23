@@ -13,7 +13,7 @@ let connectionKey = "SwiftServe.Connection"
 
 class Filter
 {
-    var routes:JLRoutes?
+    var includePaths:JLRoutes?
     var nextFilter:Filter?
     
     init()
@@ -23,15 +23,9 @@ class Filter
     
     func processFilter(connection:Connection)
     {
-        if !routes || routes!.canRouteURL(connection.request!.url)
+        if !includePaths || includePaths!.canRouteURL(connection.request!.url)
         {
             processRequest(connection)
-        }
-        
-        if routes
-        {
-            let parameters = [connectionKey:connection]
-            let handled = routes!.routeURL(connection.request!.url, withParameters: parameters)
         }
         
         if nextFilter
@@ -39,7 +33,7 @@ class Filter
             nextFilter!.processFilter(connection)
         }
         
-        if !routes || routes!.canRouteURL(connection.request!.url)
+        if !includePaths || includePaths!.canRouteURL(connection.request!.url)
         {
             processResponse(connection)
         }
@@ -55,30 +49,14 @@ class Filter
         // override this method in subclasses
     }
     
-    func processRoutes(connection:Connection, parameters:Dictionary<NSObject,AnyObject>) -> Bool
-    {
-        // override this method in subclasses
-        return true
-    }
-    
     func includePath(path:String)
     {
-        if !routes
+        if !includePaths
         {
             let classname = NSString(UTF8String: object_getClassName(self))
-            routes = JLRoutes(forScheme: classname)
+            includePaths = JLRoutes(forScheme: classname)
         }
         
-        routes!.addRoute(path, handler: handler)
-    }
-    
-    func handler(parameters:NSDictionary!) -> Bool
-    {
-        if let connection = parameters[connectionKey] as? Connection
-        {
-            return processRoutes(connection, parameters: parameters)
-        }
-        
-        return false
+        includePaths!.addRoute(path, handler: nil)
     }
 }

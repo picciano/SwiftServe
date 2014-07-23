@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SimpleEndpoint:Filter
+class SimpleEndpoint:Router
 {
     override func processRoutes(connection:Connection, parameters:Dictionary<NSObject,AnyObject>) -> Bool
     {

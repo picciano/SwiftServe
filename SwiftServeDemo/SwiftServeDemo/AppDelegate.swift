@@ -22,9 +22,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         server.filterChain.add(JSONSerialization(usePrettyPrint: true))
         
         var simpleEndpoint = SimpleEndpoint()
-//        simpleEndpoint.includePath("/*")
-        simpleEndpoint.includePath("/simple")
-        simpleEndpoint.includePath("/complex/:id")
+        simpleEndpoint.includePath("/api/*")
+        simpleEndpoint.addEndpoint("/api/complex/:id", httpMethod: HTTPMethod.GET)
         server.filterChain.add(simpleEndpoint)
         
         startServer(self)
