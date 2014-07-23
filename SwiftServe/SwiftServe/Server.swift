@@ -10,7 +10,7 @@ import Foundation
 
 class Server: GCDAsyncSocketDelegate
 {
-    let filterChain = FilterChain();
+    let filterChain = FilterChain()
     let boundHost:String?
     let port:UInt16
     @lazy var socket:GCDAsyncSocket = GCDAsyncSocket(delegate: self, delegateQueue: dispatch_get_main_queue())
